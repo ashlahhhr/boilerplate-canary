@@ -3,14 +3,19 @@ generator client {
 }
 
 datasource db {
-  provider  = "postgresql"
-  url       = env("POSTGRES_PRISMA_URL") // uses connection pooling    
-  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection   
+  provider = "sqlite"
+  url      = "file:./dev.db"
 }
 
-model User {
-  id       String  @id @default(cuid())
-  email    String  @unique
-  name     String
-  password String?
+model Perfume {
+  id               Int      @id @default(autoincrement())
+  name             String
+  baseNote         String
+  middleNote       String
+  topNote          String
+  smellDescription String
+  gender           String
+  occasion         String
+  dayTime          String
+  season           String
 }
